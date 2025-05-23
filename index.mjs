@@ -2,6 +2,7 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
+const emailRecipients = process.env.EMAIL_DESTINATION.split(',');
 
 dotenv.config();
 const app = express();
@@ -59,7 +60,7 @@ app.post('/send-booking-form', async (req, res) => {
 
     const mailOptions = {
       from: process.env.SMTP_EMAIL,
-      to: process.env.EMAIL_DESTINATION,
+      to: emailRecipients,
       subject: `New Booking Form Submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService Needed: ${service}\nIssue Description: ${issue}`,
     };
