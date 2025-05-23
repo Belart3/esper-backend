@@ -29,7 +29,7 @@ app.post('/send-hero-form', async (req, res) => {
 
     const mailOptions = {
       from: process.env.SMTP_EMAIL,
-      to: process.env.EMAIL_DESTINATION,
+      to: emailRecipients,
       subject: `New Hero Form Submission from ${fullName}`,
       text: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}`,
     };
