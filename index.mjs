@@ -61,7 +61,7 @@ app.post('/send-booking-form', async (req, res) => {
     const mailOptions = {
       from: process.env.SMTP_EMAIL,
       to: emailRecipients,
-      subject: `New Booking Form Submission - Esper Creations}`,
+      subject: `New Booking Form Submission - Esper Creations`,
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService(s) Needed: ${service}\nIssue Description: ${issue}`,
     };
 
