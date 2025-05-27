@@ -30,7 +30,7 @@ app.post('/send-hero-form', async (req, res) => {
     const mailOptions = {
       from: process.env.SMTP_EMAIL,
       to: emailRecipients,
-      subject: `New Hero Form Submission from ${fullName}`,
+      subject: `New Hero Form Submission - Esper Creations`,
       text: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}`,
     };
 
@@ -61,8 +61,8 @@ app.post('/send-booking-form', async (req, res) => {
     const mailOptions = {
       from: process.env.SMTP_EMAIL,
       to: emailRecipients,
-      subject: `New Booking Form Submission from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService Needed: ${service}\nIssue Description: ${issue}`,
+      subject: `New Booking Form Submission - Esper Creations}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService(s) Needed: ${service}\nIssue Description: ${issue}`,
     };
 
     await transporter.sendMail(mailOptions);
