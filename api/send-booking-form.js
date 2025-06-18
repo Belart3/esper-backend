@@ -1,6 +1,16 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*'); // or restrict to http://localhost:3000
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -8,7 +18,7 @@ export default async function handler(req, res) {
   const { name, email, phone, service, issue } = req.body;
 
   if (!name || !email || !phone || !service) {
-    return res.status(400).json({ message: 'Please fill out all required fields in the form' });
+    return res.status(400).json({ message: 'Please fill all required fields in the form' });
   }
 
   try {
